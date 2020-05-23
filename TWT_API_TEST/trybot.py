@@ -1,3 +1,3 @@
 import twtbot
 
-twtbot.memify_tweet('kmsaakash')
+#twtbot.memify_tweet('INSERT USERNAME HERE')
