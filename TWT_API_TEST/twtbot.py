@@ -21,7 +21,7 @@ acs_token_scrt = open('C:/Users/aakas/Documents/access token secret.txt', 'r')
 Y = acs_token_scrt.read()
 
 
-def memify_tweet(new_id):
+def memify_tweet(new_id,count):
     consumer_key = x
     consumer_secret = X  
     access_token = y
@@ -30,15 +30,13 @@ def memify_tweet(new_id):
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
     df=[]
-    person_tweets = api.user_timeline(id = new_id ,count=1)
+    person_tweets = api.user_timeline(id = new_id ,count=count)
     for tweet in person_tweets:
-        if tweet.text[0:3] != "RT ":
+        if "https://t.co" in tweet.text:
+            pass
+        elif tweet.text[0:3] != "RT ":
             api.update_status(f'@{new_id} '+ (meme(tweet.text)),tweet.id)
             df.append(tweet)
-        else:
-            pass
-    for i in df:
-        print(i.text)
     return None
     
 
